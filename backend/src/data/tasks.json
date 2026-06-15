@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Projektidee definieren",
+    "description": "Ziel und fachliches Modell für die Aufgabenverwaltung beschreiben",
+    "status": "todo",
+    "priority": "high",
+    "createdAt": "2026-06-15"
+  },
+  {
+    "id": 2,
+    "title": "Projektstruktur erstellen",
+    "description": "Ordnerstruktur für Frontend, Backend und Dokumentation anlegen",
+    "status": "in-progress",
+    "priority": "medium",
+    "createdAt": "2026-06-15"
+  },
+  {
+    "id": 3,
+    "title": "GitHub Repository vorbereiten",
+    "description": "Ersten Commit erstellen und Projekt auf GitHub speichern",
+    "status": "todo",
+    "priority": "medium",
+    "createdAt": "2026-06-15"
+  }
+]

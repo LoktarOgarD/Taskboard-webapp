@@ -1,0 +1,30 @@
+@startuml
+
+class Task {
+  +int id
+  +string title
+  +string description
+  +string status
+  +string priority
+  +string createdAt
+}
+
+class TaskService {
+  +getAllTasks()
+  +createTask()
+  +updateTask()
+  +updateTaskStatus()
+  +deleteTask()
+}
+
+class TaskRepository {
+  +findAll()
+  +save()
+  +update()
+  +delete()
+}
+
+TaskService --> TaskRepository
+TaskRepository --> Task
+
+@enduml

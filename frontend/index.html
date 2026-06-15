@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>TaskBoard WebApp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>TaskBoard WebApp</h1>
+    <p>Aufgabenverwaltung mit To Do, In Progress und Done</p>
+  </header>
+
+  <main>
+    <section id="task-form-section">
+      <h2>Neue Aufgabe</h2>
+
+      <form id="task-form">
+        <input type="text" id="task-title" placeholder="Titel der Aufgabe">
+        <textarea id="task-description" placeholder="Beschreibung"></textarea>
+
+        <select id="task-priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <button type="submit">Aufgabe erstellen</button>
+      </form>
+    </section>
+
+    <section id="board">
+      <div class="column" id="todo-column">
+        <h2>To Do</h2>
+        <div class="task-list" id="todo-tasks"></div>
+      </div>
+
+      <div class="column" id="in-progress-column">
+        <h2>In Progress</h2>
+        <div class="task-list" id="in-progress-tasks"></div>
+      </div>
+
+      <div class="column" id="done-column">
+        <h2>Done</h2>
+        <div class="task-list" id="done-tasks"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
