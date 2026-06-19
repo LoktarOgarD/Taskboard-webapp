@@ -34,6 +34,31 @@ button {
   font-size: 14px;
 }
 
+#filter-section {
+  background-color: white;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-buttons button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #222;
+  color: white;
+}
+
+.filter-buttons button:hover {
+  background-color: #555;
+}
+
 #board {
   display: flex;
   gap: 20px;
@@ -45,6 +70,17 @@ button {
   padding: 16px;
   border-radius: 8px;
   min-height: 300px;
+}
+
+.column h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column h2 span {
+  font-size: 16px;
+  color: #666;
 }
 
 .task-list {
@@ -60,14 +96,52 @@ button {
   border-radius: 6px;
 }
 
+.priority-high {
+  border-left: 5px solid #d9534f;
+}
+
+.priority-medium {
+  border-left: 5px solid #f0ad4e;
+}
+
+.priority-low {
+  border-left: 5px solid #5cb85c;
+}
+
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
 .task-card h3 {
   margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.priority-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  background-color: #e9ecef;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.task-meta {
+  font-size: 13px;
+  color: #555;
+}
+
+.task-meta p {
+  margin: 4px 0;
 }
 
 .task-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  margin-top: 10px;
 }
 
 .task-actions button {
@@ -80,4 +154,12 @@ button {
 
 .task-actions button:hover {
   background-color: #555;
+}
+
+.delete-button {
+  background-color: #a94442 !important;
+}
+
+.delete-button:hover {
+  background-color: #843534 !important;
 }

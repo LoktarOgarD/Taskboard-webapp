@@ -1,5 +1,7 @@
 const API_URL = "http://localhost:3000/api/tasks";
 
+let currentPriorityFilter = "all";
+
 async function loadTasks() {
   const response = await fetch(API_URL);
   const tasks = await response.json();
@@ -16,7 +18,17 @@ function renderTasks(tasks) {
   inProgressTasks.innerHTML = "";
   doneTasks.innerHTML = "";
 
-  tasks.forEach((task) => {
+  const filteredTasks = filterTasksByPriority(tasks);
+
+  const todoCount = filteredTasks.filter((task) => task.status === "todo").length;
+  const inProgressCount = filteredTasks.filter((task) => task.status === "in-progress").length;
+  const doneCount = filteredTasks.filter((task) => task.status === "done").length;
+
+  document.getElementById("todo-count").textContent = `(${todoCount})`;
+  document.getElementById("in-progress-count").textContent = `(${inProgressCount})`;
+  document.getElementById("done-count").textContent = `(${doneCount})`;
+
+  filteredTasks.forEach((task) => {
     const taskElement = createTaskElement(task);
 
     if (task.status === "todo") {
@@ -33,21 +45,41 @@ function renderTasks(tasks) {
   });
 }
 
+function filterTasksByPriority(tasks) {
+  if (currentPriorityFilter === "all") {
+    return tasks;
+  }
+
+  return tasks.filter((task) => task.priority === currentPriorityFilter);
+}
+
+function setPriorityFilter(priority) {
+  currentPriorityFilter = priority;
+  loadTasks();
+}
+
 function createTaskElement(task) {
   const article = document.createElement("article");
-  article.className = "task-card";
+  article.className = `task-card priority-${task.priority}`;
 
   article.innerHTML = `
-    <h3>${task.title}</h3>
+    <div class="task-card-header">
+      <h3>${task.title}</h3>
+      <span class="priority-badge">${task.priority}</span>
+    </div>
+
     <p>${task.description}</p>
-    <p><strong>Priority:</strong> ${task.priority}</p>
-    <p><strong>Status:</strong> ${task.status}</p>
+
+    <div class="task-meta">
+      <p><strong>Status:</strong> ${task.status}</p>
+      <p><strong>Priorität:</strong> ${task.priority}</p>
+    </div>
 
     <div class="task-actions">
       <button onclick="changeStatus(${task.id}, 'todo')">To Do</button>
       <button onclick="changeStatus(${task.id}, 'in-progress')">In Progress</button>
       <button onclick="changeStatus(${task.id}, 'done')">Done</button>
-      <button onclick="deleteTask(${task.id})">Delete</button>
+      <button class="delete-button" onclick="deleteTask(${task.id})">Delete</button>
     </div>
   `;
 
@@ -111,4 +143,4 @@ async function deleteTask(id) {
 
 document.getElementById("task-form").addEventListener("submit", createTask);
 
-loadTasks();console.log("TaskBoard frontend loaded");
+loadTasks();
